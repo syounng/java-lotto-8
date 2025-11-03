@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import static lotto.controller.LottoController.PURCHASED_PRICE;
+
 import java.util.*;
 
 public class Lottos {
@@ -34,5 +36,16 @@ public class Lottos {
             result.put(rank, result.getOrDefault(rank, 0) + 1);
         }
         return result;
+    }
+
+    public double calcProfitRate(Map<Rank, Integer> results) {
+        long totalPrize = results.entrySet().stream()
+                .mapToLong(entry -> (long) entry.getKey().getPrize() * entry.getValue())
+                .sum();
+
+        int totalPurchase = getSize() * PURCHASED_PRICE;
+        double profitRate = (double) totalPrize / totalPurchase * 100;
+
+        return Math.round(profitRate * 100);
     }
 }

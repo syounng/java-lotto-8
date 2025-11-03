@@ -12,15 +12,11 @@ import org.junit.jupiter.api.Test;
 
 class LottosTest {
 
-    @BeforeEach
-    void setUp() {
-        WinningNumber.INSTANCE.initialize(List.of(1, 2, 3, 4, 5, 6), 7);
-    }
-
     @DisplayName("로또 당첨 결과를 정확히 계산한다.")
     @Test
     void calcRank_정상작동_확인() {
         // given
+        WinningNumber.INSTANCE.initialize(List.of(1, 2, 3, 4, 5, 6), 7);
         Lotto lotto1 = new Lotto(List.of(1, 2, 3, 4, 5, 6)); // 6개 일치 → 1등
         Lotto lotto2 = new Lotto(List.of(1, 2, 3, 4, 5, 7)); // 5개 + 보너스 → 2등
         Lotto lotto3 = new Lotto(List.of(1, 2, 3, 4, 5, 8)); // 5개 → 3등

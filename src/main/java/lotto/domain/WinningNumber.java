@@ -2,12 +2,16 @@ package lotto.domain;
 
 import java.util.List;
 
-public class WinningNumber {
+public enum WinningNumber {
+    INSTANCE;
 
-    private final List<Integer> numbers;
-    private final int bonusNumber;
+    private List<Integer> numbers;
+    private int bonusNumber;
 
-    public WinningNumber(List<Integer> numbers, int bonusNumber){
+    public void initialize(List<Integer> numbers, int bonusNumber) {
+        if (this.numbers != null) {
+            throw new IllegalStateException("[ERROR] WinningNumber는 이미 초기화되었습니다.");
+        }
         this.numbers = numbers;
         this.bonusNumber = bonusNumber;
     }

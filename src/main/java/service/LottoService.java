@@ -3,15 +3,16 @@ package service;
 import java.util.*;
 import lotto.domain.Lottos;
 import lotto.domain.WinningNumber;
+import lotto.domain.WinningStats;
 
 public class LottoService {
 
     private static final int LOTTO_PRICE = 1000;
 
-    private WinningNumber winningNumber;
+    private WinningStats winningStats;
 
-    public LottoService(WinningNumber winningNumber){
-        this.winningNumber = winningNumber;
+    public LottoService(WinningStats winningStats){
+        this.winningStats = winningStats;
     }
 
     public Lottos generateLottos(int purchasePrice) {
@@ -29,7 +30,11 @@ public class LottoService {
                 .toList();
         WinningNumber.INSTANCE.initialize(winningNumbers, bonusNumber);
     }
-    
+
+    public void generateStats(Lottos lottos){
+        winningStats.printStats(lottos);
+    }
+
     private void validatePrice(int price) {
         if (price < LOTTO_PRICE || price % LOTTO_PRICE != 0)
             throw new IllegalArgumentException("[ERROR] 구입 금액은 1,000원 단위여야 합니다.");

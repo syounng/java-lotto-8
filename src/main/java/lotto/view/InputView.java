@@ -14,11 +14,11 @@ public class InputView {
         this.inputValidation = inputValidation;
     }
 
-    public String readPurchasePrice(){
+    public int readPurchasePrice(){
         System.out.println(MESSAGE_PURCHASE_PRICE);
         String input = consoleInput.read();
         inputValidation.validatePurchasePrice(input);
-        return input;
+        return Integer.parseInt(input);
     }
 
     public String readWinningNumbers(){

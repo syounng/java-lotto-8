@@ -3,6 +3,7 @@ package lotto.domain;
 import static lotto.controller.LottoController.PURCHASED_PRICE;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.lang.reflect.Field;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,16 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class LottosTest {
+
+    @BeforeEach
+    void resetWinningNumber() throws Exception {
+        Field numbersField = WinningNumber.class.getDeclaredField("numbers");
+        Field bonusField = WinningNumber.class.getDeclaredField("bonusNumber");
+        numbersField.setAccessible(true);
+        bonusField.setAccessible(true);
+        numbersField.set(WinningNumber.INSTANCE, null);
+        bonusField.setInt(WinningNumber.INSTANCE, 0);
+    }
 
     @DisplayName("로또 당첨 결과를 정확히 계산한다.")
     @Test

@@ -7,7 +7,7 @@ import java.util.*;
 public class Lottos {
     private final List<Lotto> lottos;
 
-    private Lottos(List<Lotto> lottos) {
+    public Lottos(List<Lotto> lottos) {
         this.lottos = lottos;
     }
 
@@ -43,9 +43,8 @@ public class Lottos {
                 .mapToLong(entry -> (long) entry.getKey().getPrize() * entry.getValue())
                 .sum();
 
-        int totalPurchase = getSize() * PURCHASED_PRICE;
-        double profitRate = (double) totalPrize / totalPurchase * 100;
-
-        return Math.round(profitRate * 100);
+        // 구매한 금액 대비 당첨금이 몇 퍼센트인지 계산 -> 소수점 둘째 자리까지 반올림
+        double profitRate = ((double) totalPrize /  PURCHASED_PRICE) * 100;
+        return Math.round(profitRate * 100) / 100.0;
     }
 }

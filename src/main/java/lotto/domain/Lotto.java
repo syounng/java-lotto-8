@@ -19,8 +19,10 @@ public class Lotto {
     public static Lotto createRandomLotto() {
         List<Integer> numbers = Randoms.pickUniqueNumbersInRange(
                 LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX, LOTTO_NUMBER_COUNT);
-        Collections.sort(numbers);
-        return new Lotto(numbers);
+        List<Integer> sortedNumbers = numbers.stream()
+                .sorted()
+                .collect(Collectors.toList());
+        return new Lotto(sortedNumbers);
     }
 
     private void validate(List<Integer> numbers) {

@@ -26,5 +26,16 @@ public class Lotto {
         if (numbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
+
+        for (Integer number : numbers) {
+            if (number < LOTTO_NUMBER_MIN || number > LOTTO_NUMBER_MAX) {
+                throw new IllegalArgumentException("[ERROR] 로또 번호는 1~45 범위 내여야 합니다.");
+            }
+        }
+
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (uniqueNumbers.size() != LOTTO_NUMBER_COUNT) {
+            throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
+        }
     }
 }

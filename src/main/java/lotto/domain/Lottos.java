@@ -17,4 +17,12 @@ public class Lottos {
         }
         return new Lottos(lottoList);
     }
+
+    public int getSize(){
+        return lottos.size();
+    }
+
+    public void printLottos(){
+        lottos.forEach(Lotto::printNumbers);
+    }
 }

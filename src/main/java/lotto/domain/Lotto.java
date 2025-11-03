@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.*;
 import camp.nextstep.edu.missionutils.Randoms;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private static final int LOTTO_NUMBER_MIN = 1;
@@ -37,6 +38,13 @@ public class Lotto {
         if (uniqueNumbers.size() != LOTTO_NUMBER_COUNT) {
             throw new IllegalArgumentException("[ERROR] 로또 번호에 중복된 숫자가 있습니다.");
         }
+    }
+
+    public void printNumbers(){
+        String formatted = numbers.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", ", "[", "]"));
+        System.out.println(formatted);
     }
 
     // 테스트를 위한 getter

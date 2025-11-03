@@ -15,7 +15,7 @@ public class Application {
         ConsoleInput consoleInput = new ConsoleInput();
         InputView inputView = new InputView(consoleInput, inputValidation);
         OutputView outputView = new OutputView();
-        WinningStats winningStats = new WinningStats();
+        WinningStats winningStats = new WinningStats(outputView);
         LottoService lottoService = new LottoService(winningStats);
         LottoController lottoController = new LottoController(inputView, outputView, lottoService);
         lottoController.run();

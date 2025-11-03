@@ -1,7 +1,6 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Lottos {
     private final List<Lotto> lottos;
@@ -24,5 +23,16 @@ public class Lottos {
 
     public void printLottos(){
         lottos.forEach(Lotto::printNumbers);
+    }
+
+    public Map<Rank, Integer> calcRank(WinningNumber winningNumber) {
+        Map<Rank, Integer> result = new EnumMap<>(Rank.class);
+        for (Lotto lotto : lottos) {
+            int matchCount = winningNumber.countMatch(lotto);
+            boolean hasBonus = winningNumber.hasBonusMatch(lotto);
+            Rank rank = Rank.of(matchCount, hasBonus);
+            result.put(rank, result.getOrDefault(rank, 0) + 1);
+        }
+        return result;
     }
 }

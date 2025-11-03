@@ -8,4 +8,8 @@ public class OutputView {
         System.out.println(lottos.getSize() + "개를 구매했습니다.");
         lottos.printLottos();
     }
+
+    public void printWinningStats(){
+
+    }
 }

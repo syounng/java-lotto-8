@@ -1,18 +1,14 @@
-package lotto.service;
+package service;
 
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class LottoService {
 
     private static final int LOTTO_PRICE = 1000;
-    private static final int LOTTO_NUMBER_MIN = 1;
-    private static final int LOTTO_NUMBER_MAX = 45;
-    private static final int LOTTO_NUMBER_COUNT = 6;
 
     public Lottos generateLottos(int purchasePrice) {
         int numberOfLotto = calcNumberOfLotto(purchasePrice);

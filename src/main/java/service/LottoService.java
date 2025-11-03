@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class LottoService {
 
     private static final int LOTTO_PRICE = 1000;
@@ -29,16 +27,9 @@ public class LottoService {
     private Lottos issueLottos(int count) {
         List<Lotto> lottoList = new ArrayList<>();
         for (int i = 0; i < count; i++) {
-            List<Integer> numbers = generateRandomNumbers();
-            lottoList.add(new Lotto(numbers));
+            lottoList.add(Lotto.createRandomLotto());
         }
         return new Lottos(lottoList);
-    }
-
-    private List<Integer> generateRandomNumbers() {
-        List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX, LOTTO_NUMBER_COUNT);
-        Collections.sort(numbers);
-        return numbers;
     }
 
     private void isValidatePrice(int price){

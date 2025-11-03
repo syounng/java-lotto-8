@@ -9,11 +9,13 @@ public class OutputView {
     public void printPurchasedLottos(Lottos lottos){
         System.out.println(lottos.getSize() + "개를 구매했습니다.");
         lottos.printLottos();
+        System.out.println();
     }
 
     public void printWinningStats(Map<Rank, Integer> results){
+        System.out.println();
         System.out.println("당첨 통계");
-        System.out.println("---------");
+        System.out.println("---");
         System.out.printf("3개 일치 (5,000원) - %d개%n", results.getOrDefault(Rank.FIFTH, 0));
         System.out.printf("4개 일치 (50,000원) - %d개%n", results.getOrDefault(Rank.FOURTH, 0));
         System.out.printf("5개 일치 (1,500,000원) - %d개%n", results.getOrDefault(Rank.THIRD, 0));

@@ -17,6 +17,7 @@ public class InputView {
     public int readPurchasePrice(){
         System.out.println(MESSAGE_PURCHASE_PRICE);
         String input = consoleInput.read();
+        System.out.println();
         inputValidation.validatePurchasePrice(input);
         return Integer.parseInt(input);
     }
@@ -24,6 +25,7 @@ public class InputView {
     public String readWinningNumbers(){
         System.out.println(MESSAGE_WINNING_NUMBERS);
         String input = consoleInput.read();
+        System.out.println();
         inputValidation.validateWinningNumbers(input);
         return input;
     }
